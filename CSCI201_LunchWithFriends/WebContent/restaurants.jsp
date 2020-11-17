@@ -11,7 +11,10 @@
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
 	
 	<title>Search Results</title>
-	
+	 <script
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC0WY4DfBXb0unVqaLndM4t1GjzwqwOsyU&callback=initMap&libraries=&v=weekly"
+      defer
+    ></script>
 	<style>
 		#header {
 			height: 15%;
@@ -50,21 +53,26 @@
 			background: none;
 			border: none;
 		}
-		#map {
-			position: fixed;
-			bottom: 0;
-			right: 0;
-			width: 30%;
-			height: 80%;
-			background-color: #d4d4d4;
-			z-index: -2;
+		#container {
+			position: relative;
+			top: 100px;
+			left: 50%;
 		}
+      	/* Set the size of the div element that contains the map */
+      	#map {
+        	height: 550px;
+        	/* The height is 400 pixels */
+        	width: 50%;
+        	/* The width is the width of the web page */
+      	}
 		#main {
 			width: 70%;
 			position: relative;
 			top: 150px;
 		}
 	</style>
+	<script src="display_map.js"></script>
+    <script src="display_restaurants.js"> </script>
 </head>
 <body>
 	<div id="header">
@@ -83,8 +91,9 @@
 	<div id="main">
 		<p>Placeholder text for restaurants</p>
 	</div>
-	
+	<div id="container">
 	<div id="map"> <!-- map goes here -->
+	</div>
 	</div>
 </body>
 </html>
