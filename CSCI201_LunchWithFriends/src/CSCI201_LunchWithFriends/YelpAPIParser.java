@@ -19,28 +19,25 @@ import java.util.List;
 import java.util.Objects;
 
 public class YelpAPIParser {
-    
-    public static List<Business> getBusiness(String term, Location location) {
-        try {
-            OkHttpClient client = new OkHttpClient().newBuilder().build();
-            String builder = "https://api.yelp.com/v3/businesses/search" + "?term=" + term +
-                    "&latitude=" + location.getLatitude() + "&longitude=" + location.getLongitude();
-            String apiKey = "BEARER Q33lviU83bjK-P3T6lvt8UU2ozR4DEk-XmGJzEQbAOmGINEJbXXcDEUJW0V88HY" +
-                    "UQcVaA8KgIBM4AH5tbJ0aY0VjDko0cDdPoWK1cJtKFGpFuM8wvyz5eyBGPySxX3Yx";
-            Request request = new Request.Builder().url(builder).method("GET", null).addHeader(
-                    "Authorization",
-                    apiKey)
-                    .build();
-            Response response = client.newCall(request).execute();
+	public static List<Business> getBusiness(String term, Location location) {
+		try {
+			OkHttpClient client = new OkHttpClient().newBuilder().build();
+			String builder = "https://api.yelp.com/v3/businesses/search" + "?term=" + term + "&latitude="
+					+ location.getLatitude() + "&longitude=" + location.getLongitude();
+			String apiKey = "BEARER Q33lviU83bjK-P3T6lvt8UU2ozR4DEk-XmGJzEQbAOmGINEJbXXcDEUJW0V88HY"
+					+ "UQcVaA8KgIBM4AH5tbJ0aY0VjDko0cDdPoWK1cJtKFGpFuM8wvyz5eyBGPySxX3Yx";
+			Request request = new Request.Builder().url(builder).method("GET", null).addHeader("Authorization", apiKey)
+					.build();
+			Response response = client.newCall(request).execute();
 
-    		Gson gson = new Gson();
-    		Businesses businesses = gson.fromJson((response.body()).string(), new TypeToken<Businesses>(){}.getType());
-    		return businesses.getBusinesses();
-            
-        } catch (IOException ioe) {
-            ioe.printStackTrace();
-        }
-        return null;
-    }
+			Gson gson = new Gson();
+			Businesses businesses = gson.fromJson((response.body()).string(), new TypeToken<Businesses>() {
+			}.getType());
+			return businesses.getBusinesses();
+
+		} catch (IOException ioe) {
+			ioe.printStackTrace();
+		}
+		return null;
+	}
 }
-

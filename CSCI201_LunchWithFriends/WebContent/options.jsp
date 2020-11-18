@@ -1,25 +1,20 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
+    pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="ISO-8859-1">
-
-	<link href="style.css" rel="stylesheet" type="text/css">
+<meta charset="ISO-8859-1">
+<link href="style.css" rel="stylesheet" type="text/css">
 	<link 
-	href="https://fonts.googleapis.com/css2?family=Lato:wght@700&display=swap" rel="stylesheet">
+	href="https://fonts.googleapis.com/css2?family=Lato:wght@700&display=swap" 
+	rel="stylesheet">
 	<link
 	href="https://fonts.googleapis.com/css2?family=Commissioner:wght@300&display=swap"
 	rel="stylesheet">
 	<link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
-
-	<title>Search Results</title>
-
-	<script
-		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC0WY4DfBXb0unVqaLndM4t1GjzwqwOsyU&callback=initMap&libraries=&v=weekly"
-		defer></script>
-
+	<title>Choose an Option</title>
+	
 	<style>
 		#header {
 			height: 15%;
@@ -62,29 +57,39 @@
 			background: none;
 			border: none;
 		}
-
-		#container {
-			position: relative;
-			top: 100px;
-			left: 50%;
-		}
-		/* Set the size of the div element that contains the map */
-		#map {
-			height: 550px;
-			/* The height is 400 pixels */
-			width: 50%;
-			/* The width is the width of the web page */
-		}
-
 		#main {
-			width: 70%;
+			width: 80%;
 			position: relative;
+			margin: 0 auto;
 			top: 150px;
+			z-index: -1;
 		}
+		h2 {
+			font-size: 2em;
+			font-family: 'Lato', sans-serif;
+			text-align: center;
+		}
+		.img-option {
+			height: 400px;
+			width: 400px;
+			border-radius: 50%;
+			margin: 50px;
+			margin-top: 20px;
+			margin-bottom: 0px;
+		}
+		.container {
+			width: 50%;
+			float: left;
+		}
+		/*.vertical { 
+            border-left: 2px solid #d4d4d4; 
+            height: 300px; 
+            position: absolute; 
+            left: 50%; 
+            bottom: 100px;
+        } */
 		
 	</style>
-	<script src="display_map.js"></script>
-	<script src="display_restaurants.js"></script>
 </head>
 <body>
 	<div id="header">
@@ -109,14 +114,15 @@
 			</button>
 		</div>
 	</div>
-
 	<div id="main">
-		<p>Placeholder text for restaurants</p>
-	</div>
-
-	<div id="container">
-		<div id="map">
-			<!-- map goes here -->
+		<div class="container">
+			<img class="img-option" src="https://i.imgur.com/vnyXkBl.png" alt="Group Illustration">
+			<h2>Group</h2>
+		</div>
+		<!-- <div class = "vertical"></div> -->
+		<div class="container">
+			<img class="img-option" src="https://i.imgur.com/9Mdnoz3.png" alt="Single Illustration">
+			<h2>Single</h2>
 		</div>
 	</div>
 </body>

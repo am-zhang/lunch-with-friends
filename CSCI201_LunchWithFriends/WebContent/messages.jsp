@@ -1,25 +1,20 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
+    pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="ISO-8859-1">
-
-	<link href="style.css" rel="stylesheet" type="text/css">
+<meta charset="ISO-8859-1">
+<link href="style.css" rel="stylesheet" type="text/css">
 	<link 
-	href="https://fonts.googleapis.com/css2?family=Lato:wght@700&display=swap" rel="stylesheet">
+	href="https://fonts.googleapis.com/css2?family=Lato:wght@700&display=swap" 
+	rel="stylesheet">
 	<link
 	href="https://fonts.googleapis.com/css2?family=Commissioner:wght@300&display=swap"
 	rel="stylesheet">
 	<link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
-
-	<title>Search Results</title>
-
-	<script
-		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC0WY4DfBXb0unVqaLndM4t1GjzwqwOsyU&callback=initMap&libraries=&v=weekly"
-		defer></script>
-
+	<title>Messages</title>
+	
 	<style>
 		#header {
 			height: 15%;
@@ -62,29 +57,24 @@
 			background: none;
 			border: none;
 		}
-
-		#container {
-			position: relative;
-			top: 100px;
-			left: 50%;
-		}
-		/* Set the size of the div element that contains the map */
-		#map {
-			height: 550px;
-			/* The height is 400 pixels */
-			width: 50%;
-			/* The width is the width of the web page */
-		}
-
 		#main {
 			width: 70%;
 			position: relative;
 			top: 150px;
+			left: 200px;
+		}
+		.container {
+			width: 100%;
+			border: 2px solid #d4d4d4;
+			border-radius: 15px;
+			display: inline-block;
+		}
+		h2 {
+			font-size: 2em;
+			font-family: 'Lato', sans-serif;
 		}
 		
 	</style>
-	<script src="display_map.js"></script>
-	<script src="display_restaurants.js"></script>
 </head>
 <body>
 	<div id="header">
@@ -109,15 +99,12 @@
 			</button>
 		</div>
 	</div>
-
 	<div id="main">
-		<p>Placeholder text for restaurants</p>
-	</div>
-
-	<div id="container">
-		<div id="map">
-			<!-- map goes here -->
+		<h2>Messages</h2>
+		<div class="container">
+			<p>Placeholder text for messages</p>
 		</div>
+		<hr>
 	</div>
 </body>
 </html>

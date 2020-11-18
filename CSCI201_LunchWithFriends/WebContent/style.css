@@ -57,4 +57,7 @@ button {
 button:focus {
 	outline: none;
 }
+.clearfloat {
+	clear: both;
+}
 

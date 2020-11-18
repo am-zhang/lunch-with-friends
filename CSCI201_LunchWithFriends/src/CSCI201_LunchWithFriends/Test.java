@@ -8,7 +8,7 @@ public class Test {
 		Location loc = new Location(37.7, -122.4);
 
 		List<Business> businesses = YelpAPIParser.getBusiness(" ", loc);
-		for(Business bus: businesses) {
+		for (Business bus : businesses) {
 			System.out.println("Name: " + bus.getName());
 			System.out.println("Rating: " + bus.getRating());
 			System.out.println("Price: " + bus.getPrice());
@@ -19,5 +19,4 @@ public class Test {
 			System.out.println();
 		}
 	}
-
 }
