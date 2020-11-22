@@ -1,6 +1,7 @@
 package CSCI201_LunchWithFriends;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 
 public class Business implements Serializable {
 	private static final long serialVersionUID = 1174418428708492256L;
@@ -12,6 +13,8 @@ public class Business implements Serializable {
 	private String url;
 	private Coordinates coordinates;
 	private Address location;
+	private ArrayList<User> interestedUsers;
+	private ArrayList<User> groupUsers;
 
 	public Business(int rating, String price, boolean is_closed, String name, String url, Coordinates coordinates,
 			Address location) {
@@ -62,6 +65,25 @@ public class Business implements Serializable {
 			output += str + " ";
 		return output;
 	}
+	
+	public void likesRestaurant(User ie, boolean single) {
+		if(single) {
+			interestedUsers.add(ie);
+		} else {
+			groupUsers.add(ie);
+		}
+	}
+	
+	//returns whether the user has decided on the restaurant or not	
+	public boolean hasDecidedOnRestaurant(User ie) {
+		
+		return (interestedUsers.contains(ie) || groupUsers.contains(ie));
+		
+	} 
+	
+	public ArrayList<User> getInterestedUsers() {
+		return this.interestedUsers;
+	}
 
 	class Coordinates implements Serializable {
 		private static final long serialVersionUID = 1178708492256L;
@@ -73,4 +95,6 @@ public class Business implements Serializable {
 		private static final long serialVersionUID = 117884256L;
 		private String[] display_address;
 	}
+	
+	
 }
