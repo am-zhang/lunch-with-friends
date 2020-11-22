@@ -1,10 +1,11 @@
-package csci201_finalProject;
+package CSCI201_LunchWithFriends;
 
 import java.io.IOException;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.List;
 import java.util.Vector;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -48,17 +49,35 @@ public class JDBC_Access extends HttpServlet {
 			PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM usersTest");
 			ResultSet resultSet = preparedStatement.executeQuery();
 			
-			User user = new User("Amir", "amir@", "hey");
+			Login login = new Login();
+			User user = new User("A", "h", "fd");//login.Login();
+			Test test = new Test();
 			userDBAccess userAccess = new userDBAccess();
+			Location loc = new Location(27.2046, 77.4977);
+			//List<Business> bTemp = YelpAPIParser.getBusiness(" ", loc);
+			tempR t = new tempR();
+			
+			List<Business> bTemp = t.businesses;
+			businessDBAccess busDB = new businessDBAccess();
+			
+			
+			for(Business i : bTemp) {
+				
+				long serialized_id = busDB.serializeJavaObjectToDB(connection, i);	
+				Business objFromDB = (Business) busDB.deSerializeJavaObjectFromDB(connection, serialized_id);
+				response.getWriter().append(objFromDB.getName() + "\n");
+				
+			}
 
 			// serializing java object to mysql database
-			long serialized_id = userAccess.serializeJavaObjectToDB(connection, user);
+			//long serialized_id = userAccess.serializeJavaObjectToDB(connection, user);
+			//String roomid = serialized_id.toString();
 
 			// de-serializing java object from mysql database
-			User objFromDatabase = (User) userAccess.deSerializeJavaObjectFromDB(
-					connection, serialized_id);
+//			User objFromDatabase = (User) userAccess.deSerializeJavaObjectFromDB(
+//					connection, serialized_id);
 			
-			response.getWriter().append(objFromDatabase.getName() + "\n");
+			//response.getWriter().append(objFromDatabase.getName() + "\n");
 			
 			while (resultSet.next()) {
 				String nameString = resultSet.getString("guestName");

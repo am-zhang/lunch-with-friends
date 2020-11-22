@@ -1,60 +1,107 @@
-package csci201_finalProject;
-
+package CSCI201_LunchWithFriends;
 import java.util.ArrayList;
 import java.util.HashMap;
-
+import java.util.List;
 import java.io.*;
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.WebServlet;
 
-@WebServlet("/User")
-public class User extends HttpServlet {
+import java.io.IOException;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
-	private String name;
+/**
+ * Servlet implementation class User
+ */
+@WebServlet("/User")
+public class User {
+//	private static final long serialVersionUID = 1L;
+	private String uniqueID; 
+	public String name;
 	private String email;
-	private String bio;
 	private HashMap<Restaurant, ArrayList<InterestedUser>> potentialMatches;
 	private HashMap<Restaurant, Boolean> groupOrSingle; //true if interested in group, false if only single user
+	Location loc = new Location(37.7, -122.4);
+	//private List<Business> businesses = YelpAPIParser.getBusiness(" ", loc);
 	
-	public User() {}
-	public User(String name, String email, String bio) {
+	
+    public User() {
+        super();
+        // TODO Auto-generated constructor stub
+    }
+
+//	/**
+//	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+//	 */
+//	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+//		String nextPage = "/match.jsp";
+//		String yesB = request.getParameter("yes");
+//		String noB = request.getParameter("no");
+//		PrintWriter out = response.getWriter();
+//		System.out.print("HEYYYYY");
+//		if(yesB == null || yesB.isEmpty()) {
+//			this.name = "yes";
+//			request.setAttribute("user1", this);
+//			nextPage = "/match.jsp";
+////			out.println("<html><body>");
+////          out.println("yes");
+////          out.println("</body></html>");
+//		} else {
+//			this.name = "hey";
+//			//request.setAttribute("hey", this);
+////			out.println("<html><body>");
+////	          out.println("no");
+////	          out.println("</body></html>");
+//		}
+//		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(nextPage);
+//		dispatcher.forward(request, response);
+//		// TODO Auto-generated method stub
+//		//response.getWriter().append("Served at: ").append(request.getContextPath());
+//	}
+//
+//	/**
+//	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+//	 */
+//	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+//		// TODO Auto-generated method stub
+//		doGet(request, response);
+//	}
+
+//}
+//
+//
+//
+//
+//
+//
+//
+//
+//import java.util.ArrayList;
+//import java.util.HashMap;
+//
+//import java.io.*;
+//import javax.servlet.*;
+//import javax.servlet.http.*;
+//import javax.servlet.annotation.WebServlet;
+//
+//@WebServlet("/User")
+//public class User extends HttpServlet {
+
+//	private String name;
+//	private String email;
+//	private String bio;
+//	private HashMap<Restaurant, ArrayList<InterestedUser>> potentialMatches;
+//	private HashMap<Restaurant, Boolean> groupOrSingle; //true if interested in group, false if only single user
+//	
+//	public User() {}
+	public User(String name, String email, String uniqueID) {
 		this.name = name;
 		this.email = email;
-		this.bio = bio;
-	}
-	
-	
-	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
-	{
-		response.setContentType("text/html");
-		PrintWriter out = response.getWriter();
-		//PrintWriter out = response.getWriter();
-		String error = "";
-		System.out.print("hello");
-		String button = request.getParameter("button");
-		if ("button1".equals(button)) {
-           out.println("<html><body>");
-           out.println("hey");
-           out.println("</body></html>");
-        } else if ("button2".equals(button)) {
-        	System.out.print("hello");
-        } else if ("button3".equals(button)) {
-        	System.out.print("goodbye");
-        }
-		//String lna = request.getParameter("last_name");
-//		if (fna.contentEquals(""))
-//			error += "<p>first name missing</p>";
-//		if (lna.contentEquals(""))
-//			error += "<p>last name missing</p>";
-//
-//		if (error.equals(""))
-//	        request.getRequestDispatcher("Submitted.jsp").forward(request, response);
-//		else
-//		{
-//			request.setAttribute("error", error);
-//			request.getRequestDispatcher("Exercise.jsp").include(request, response);
-//		}
+		this.uniqueID = uniqueID;
 	}
 	
 	
@@ -163,8 +210,8 @@ public class User extends HttpServlet {
 	}
 
 
-	public String getBio() {
-		return bio;
+	public String getUniqueID() {
+		return uniqueID;
 	}
 
 
@@ -191,3 +238,4 @@ public class User extends HttpServlet {
 	
 	
 }
+

@@ -1,18 +1,18 @@
-package csci201_finalProject;
+package CSCI201_LunchWithFriends;
+
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-public class userDBAccess {
-
-	private static final String SQL_SERIALIZE_OBJECT = "INSERT INTO serialized_java_objects(object_name, serialized_object) VALUES (?, ?)";
-	private static final String SQL_DESERIALIZE_OBJECT = "SELECT serialized_object FROM serialized_java_objects WHERE serialized_id = ?";
+public class businessDBAccess {
+	
+	private static final String SQL_SERIALIZE_OBJECT = "INSERT INTO serialized_java_restaurants(object_name, serialized_object) VALUES (?, ?)";
+	private static final String SQL_DESERIALIZE_OBJECT = "SELECT serialized_object FROM serialized_java_restaurants WHERE serialized_id = ?";
 	public static final String CREDENTIALS_STRING = "jdbc:mysql://google/lunchwithfriends?cloudSqlInstance=csci201-lunchwithfriends:us-west2:lunchwithfriends&socketFactory=com.google.cloud.sql.mysql.SocketFactory&useSSL=false&user=lunchwithfriendsTest&password=lunchwithfriends";
 
 
@@ -67,7 +67,7 @@ public class userDBAccess {
 		if (buf != null)
 			objectIn = new ObjectInputStream(new ByteArrayInputStream(buf));
 
-		User deSerializedObject = (User)objectIn.readObject();
+		Business deSerializedObject = (Business)objectIn.readObject();
 
 		rs.close();
 		pstmt.close();
@@ -80,9 +80,5 @@ public class userDBAccess {
 	}
 
 }
-
-
-
-
 
 

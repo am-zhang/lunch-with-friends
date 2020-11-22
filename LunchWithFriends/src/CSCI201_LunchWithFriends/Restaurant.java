@@ -1,4 +1,4 @@
-package csci201_finalProject;
+package CSCI201_LunchWithFriends;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -12,6 +12,7 @@ public class Restaurant {
 	
 	public Restaurant(String address) {
 		this.address = address;
+		this.interestedUsers = new ArrayList<User>();
 	}
 	
 	public void likesRestaurant(User ie, boolean single) {
@@ -28,6 +29,10 @@ public class Restaurant {
 		return (interestedUsers.contains(ie) || groupUsers.contains(ie));
 		
 	} 
+	
+	public ArrayList<User> getInterestedUsers() {
+		return this.interestedUsers;
+	}
 	
 	
 	
