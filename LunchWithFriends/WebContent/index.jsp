@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+<%@ page import= "CSCI201_LunchWithFriends.User" language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html>
@@ -56,30 +56,36 @@
 <body>
 	<h1>Lunch With Friends</h1>
 	<div class="g-signin2" data-onsuccess="onSignIn"></div>
+	<script src="https://apis.google.com/js/platform.js?onload=init" async defer></script>
+	
 	<script>
-	      function onSignIn(googleUser) {
+		
+	       function onSignIn(googleUser) {
 		        // Useful data for your client-side scripts:
 		        var profile = googleUser.getBasicProfile();
-		        console.log("ID: " + profile.getId()); // Don't send this directly to your server!
+		        console.log("ID: " + profile.getId()); 
 		        console.log('Full Name: ' + profile.getName());
 		        console.log('Given Name: ' + profile.getGivenName());
 		        console.log('Family Name: ' + profile.getFamilyName());
 		        console.log("Image URL: " + profile.getImageUrl());
 		        console.log("Email: " + profile.getEmail());
-		
-		        // The ID token you need to pass to your backend:
-		        var id_token = googleUser.getAuthResponse().id_token;
-		        console.log("ID Token: " + id_token);
-		        
+
+		        if(profile.getName() != null) {
 		        var xhr = new XMLHttpRequest();
-		        xhr.open('POST', 'https://yourbackend.example.com/tokensignin');
+		        xhr.open('POST', 'http://localhost:8080/LunchWithFriends/JDBCUser_Access');
+		        
 		        xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 		        xhr.onload = function() {
 		          console.log('Signed in as: ' + xhr.responseText);
 		        };
-		        xhr.send('idtoken=' + id_token);
+		        
+		        xhr.send("USERname=" + profile.getName() + "," + profile.getEmail() + "," + profile.getId());
+		        
+		        }
+		        
 	      }
     </script>
+    	
 	<script src="https://apis.google.com/js/platform.js" async defer></script>
 	<form class="searchbar" action="http://localhost:8080/LunchWithFriends/SearchRestaurantDisplay"> <!-- replace this with a link to restaurants page -->
 		<input type="text" name="searchname" placeholder="Search for your favorite restaurants...">

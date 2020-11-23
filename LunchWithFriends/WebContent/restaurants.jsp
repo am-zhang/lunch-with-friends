@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+<%@ page import= "CSCI201_LunchWithFriends.User" language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@page import="java.util.*"%>
 <%@ page import="CSCI201_LunchWithFriends.Business" %>
@@ -128,8 +128,24 @@
 			</button>
 		</div>
 	</div>
+	
+	<% User user = (User) session.getAttribute("currUser");
+	if(user == null) {
+		%> <div id="main">
+		<%
+		for(Business b : businessList){
+			%>
+				<p><%= b.getName() %></p>
+				<p>Rating: <%= b.getRating() %> / 5.0</p>
+				<p><%= b.getAddress() %></p>
+				<hr>
+			<%
+		}
+		%>
 
-	<div id="main">
+	</div> <%
+	} else {
+		%> <div id="main">
 		<%
 		for(Business b : businessList){
 			%>
@@ -145,7 +161,9 @@
 		}
 		%>
 
-	</div>
+	</div> <%
+	}
+	%>
 
 	<div id="container">
 		<div id="map">
